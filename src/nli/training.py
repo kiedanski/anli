@@ -15,6 +15,7 @@ from transformers import AlbertTokenizer, AlbertForSequenceClassification
 from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
 from transformers import BartTokenizer, BartForSequenceClassification
 from transformers import ElectraTokenizer, ElectraForSequenceClassification
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 from torch.utils.data import Dataset, DataLoader, DistributedSampler, RandomSampler, SequentialSampler
 import config
@@ -150,7 +151,16 @@ MODEL_CLASSES = {
         "padding_att_value": 0,
         "internal_model_name": "electra",
         'insight_supported': True,
-    }
+    },
+    "snli-custom": {
++        "model_name": "ynie/roberta-large-snli_mnli_fever_anli_R1_R2_R3-nli",
++        "tokenizer": AutoTokenizer,
++        "sequence_classification": AutoModelForSequenceClassification,
++        "padding_segement_value": 0,
++        "padding_att_value": 0,
++        "internal_model_name": "custom",
++        'insight_supported': True,
+     }
 }
 
 registered_path = {
@@ -764,7 +774,8 @@ def train(local_rank, args):
                     break
 
         # End of epoch evaluation.
-        if args.global_rank in [-1, 0] and args.total_step <= 0:
+        if True:
+        #if args.global_rank in [-1, 0] and args.total_step <= 0:
             r_dict = dict()
             # Eval loop:
             for i in range(len(eval_data_name)):
