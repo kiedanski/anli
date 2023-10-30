@@ -153,13 +153,13 @@ MODEL_CLASSES = {
         'insight_supported': True,
     },
     "snli-custom": {
-+        "model_name": "ynie/roberta-large-snli_mnli_fever_anli_R1_R2_R3-nli",
-+        "tokenizer": AutoTokenizer,
-+        "sequence_classification": AutoModelForSequenceClassification,
-+        "padding_segement_value": 0,
-+        "padding_att_value": 0,
-+        "internal_model_name": "custom",
-+        'insight_supported': True,
+        "model_name": "ynie/roberta-large-snli_mnli_fever_anli_R1_R2_R3-nli",
+        "tokenizer": AutoTokenizer,
+        "sequence_classification": AutoModelForSequenceClassification,
+        "padding_segement_value": 0,
+        "padding_att_value": 0,
+        "internal_model_name": "custom",
+        'insight_supported': True,
      }
 }
 
